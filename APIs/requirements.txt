@@ -1,0 +1,7 @@
+google.cloud
+selenium
+PIL
+numpy
+cv2
+time
+
