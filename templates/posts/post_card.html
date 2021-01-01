@@ -11,9 +11,9 @@
         <img style="width: 100%;" src="{{ post.photo.url }}" alt="{{ post.title }}">
     </a>
     <p class="mt-1 ml-2" >
-        <a href="" style="color: #000; font-size: 20px;">
-            <i class="far fa-heart"></i>
-        </a> 30 likes
+        <span class="like_toggle_button" href="" style="color: #000; font-size: 20px;" id="like{{ post.pk }}" data-post-id="{{ post.pk }}">
+            <i class="far fa-heart"></i> {% comment %} Change it later {% endcomment %}
+        </span> <span id="like_cnt{{ post.pk }}"> {{post.like_set.count}} </span>
     </p>
     <p class="ml-2 mt-0 mb-2">
         <b>{{ post.title }}</b> - <small>{{ post.created }}</small>
