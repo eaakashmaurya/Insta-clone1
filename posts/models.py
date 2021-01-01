@@ -9,7 +9,7 @@ from users.models import Profile
 class Post(models.Model):
     """Post Model."""
 
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="posts")
 
     title = models.CharField(max_length=255)
     photo = models.ImageField(upload_to='posts/photos')
