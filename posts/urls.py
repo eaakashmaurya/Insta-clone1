@@ -26,4 +26,7 @@ urlpatterns = [
         view=login_required(views.PostDetailView.as_view()),
         name='detail'
     ),
+
+    path('like', views.toggle_like, name='like'),
+
 ]

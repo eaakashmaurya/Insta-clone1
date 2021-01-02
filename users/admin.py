@@ -6,10 +6,12 @@ from django.contrib import admin
 
 # models
 from django.contrib.auth.models import User
-from users.models import Profile
+from users.models import Profile, Follow
 
 
-@admin.register(Profile)
+admin.site.register(Profile)
+admin.site.register(Follow)
+
 class ProfileAdmin(admin.ModelAdmin):
     """Profile Admin"""
     # Lista de los atributos que mostrara en el admin

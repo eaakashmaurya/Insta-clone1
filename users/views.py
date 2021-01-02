@@ -4,6 +4,7 @@
 from django.contrib.auth import logout
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import request
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import DetailView, FormView, UpdateView
@@ -14,7 +15,7 @@ from users.forms import SignupForm
 
 # Models
 from posts.models import Post
-from users.models import Profile
+from users.models import Profile, Follow
 
 # Create your views here.
 
@@ -67,4 +68,7 @@ class UserDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         user = self.get_object()
         context['posts'] = Post.objects.filter(profile__user=user).order_by('-created')
+        print(type(context['user']))
+        context["user_follows_this"] = Follow.objects.all().filter(follower = user, following = context["user"]) and True or False
+        print(context["user_follows_this"])
         return context

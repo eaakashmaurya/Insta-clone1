@@ -1,17 +1,20 @@
 """Posts Views"""
 
 # Django
+from django.contrib.auth.decorators import login_required
+from django.http.response import HttpResponse, JsonResponse
+from django.views.decorators.http import require_POST
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-# from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
 # Models
-from posts.models import Post
+from posts.models import Post, Like
+from users.models import Profile
 
 # Forms
 from posts.forms import PostForm
-
 
 # LoginRequired into Views
 class CreatePostView(LoginRequiredMixin, CreateView):
@@ -44,3 +47,25 @@ class PostDetailView(DetailView):
     slug_url_kwarg = 'post_id'
     queryset = Post.objects.all()
     context_object_name = 'post'
+
+
+
+@login_required
+@require_POST
+@csrf_exempt
+def toggle_like(request):
+    if request.method == 'POST':
+        user = Profile.objects.get(user=request.user)
+        post_id = request.POST["post_id"]
+        print("post_id: ", post_id)
+        post = Post.objects.get(pk=post_id)
+        # toggle like
+        try:
+            Like.objects.get(user=user, post=post).delete()
+            return JsonResponse({"like_status" : 0, "likes_cnt": str(post.like_set.all().count())})
+        except Like.DoesNotExist:
+            Like.objects.create(user=user, post=post)
+            return JsonResponse({"like_status" : 1, "likes_cnt": str(post.like_set.all().count())})
+
+    else:
+        return HttpResponse("Failure :(") 
