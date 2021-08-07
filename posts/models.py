@@ -25,7 +25,6 @@ class Post(models.Model):
         """Return title and username"""
         return "{} by @{}".format(self.title, self.profile.user.username)
 
-
 class Like(models.Model):
     user = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True)
     post = models.ForeignKey(Post, on_delete=models.CASCADE) 

@@ -25,7 +25,7 @@ SECRET_KEY = ')p8c2g4laxvl(lg@z-r&6*t3^2@#7(bkrd0szmv&mh%82ea56i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["brown-pig-29.loca.lt", "f24f1864590c.ngrok.io", 'localhost', '127.0.0.1', '0.0.0.0']
 
 
 # Application definition
@@ -113,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -126,6 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
