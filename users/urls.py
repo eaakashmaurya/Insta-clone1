@@ -37,4 +37,7 @@ urlpatterns = [
         view=login_required(views.UserDetailView.as_view()),
         name='detail'
     ),
+
+    path('follow', views.toggle_follow, name='follow'),
+
 ]

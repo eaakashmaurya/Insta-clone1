@@ -16,9 +16,15 @@ urlpatterns = [
     ),
 
     path(
-        route='posts/new/',
-        view=views.CreatePostView.as_view(),
+        route='posts/newText',
+        view=views.CreatePostView,
         name='create_post'
+    ),
+
+    path(
+        route='posts/newPhoto',
+        view=views.CreatePhotoView,
+        name='create_photo'
     ),
 
     path(
@@ -27,6 +33,12 @@ urlpatterns = [
         name='detail'
     ),
 
-    path('like', views.toggle_like, name='like'),
+    path(
+        route = 'like',
+        view = views.toggle_like,
+        name='like'
+    ),
+
+    path('search.json', views.autocompleteModel, name="autocomplete"),
 
 ]

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block head_content %}
-<title>@{{ user.user }} | VishwaSetu</title>
+<title>@{{ user.username }} | Platzigram</title>
 {% endblock %}
 
 {% block container %}
@@ -9,11 +9,11 @@
     <div class="container mb-5" style="margin-top: 8em;">
         <div class="row">
             <div class="col-sm-4 d-flex justify-content-center">
-                <img src="{{ user.picture.url }}" alt="@{{ user.user}}" class="rounded-circle" max-width="150px" height="150px" />
+                <img src="{{ user.profile.picture.url }}" alt="@{{ user.username}}" class="mr-3 rounded-circle" height="150" width="150" />
             </div>
             <div class="col-sm-8">
                 <h2 style="font-weight: 100;">
-                    {{ user.user }}
+                    {{ user.username }}
                     {% if user == request.user %}
                         <a
                             href="{% url "users:update_profile" %}"
@@ -22,25 +22,32 @@
                             Edit profile
                         </a>
                     {% else %}
-                        <span href="" class="ml-5 btn btn-sm btn-primary" id="follow">
-                            Follow
+                        <span
+                            class="ml-5 btn btn-sm btn-primary follow_toggle_button"
+                            data-user-id="{{ user.profile.pk }}"
+                        >
+                            {% if user_follows_this == True %}
+                            Following 
+                            {% else %}
+                            Follow 
+                            {% endif %}
                         </span>
                     {% endif %}
                 </h2>
                 <div class="row mt-2" style="font-size: 1.2em">
                     <div class="col-sm-4">
-                        <b>{{ user.posts.count }}</b> posts
+                        <b>{{ user.profile.posts.count }}</b> posts
                     </div>
                     <div class="col-sm-4">
-                        <b>{{ user.follower.count }}</b> followers
+                        <b class="followers">{{ user.profile.following.count }}</b> followers
                     </div>
                     <div class="col-sm-4">
-                        <b>{{ user.following.count }}</b> following
+                        <b>{{ user.profile.follower.count }}</b> following
                     </div>
                 </div>
                 <div class="row mt-4">
                     <div class="col-sm-12">
-                        <p>{{ user.biography }}</p>
+                        <p>{{ user.profile.biography }}</p>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head_content %}
+    <title>Learning Tools - VishwaSetu</title>
+{% endblock head_content %}
+
+{% block container %}
+<head>
+</head>
+
+<div class="container">
+    <div class="list-group p-5">
+    <a href="/tools/dictionary" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="row">
+            <div class="col-sm-2">
+                <img src="https://img.icons8.com/ios-filled/80/000000/dictionary.png"/>
+            </div>
+            <div class="col-sm-10">
+                <div class="d-flex w-100 justify-content-between">
+                    <h3 class="mb-1">शब्दकोश (Dictionary)</h3>
+                </div>
+                <p class="mb-5">Find the meaning of a Sanskrit word.</p>
+            </div>
+        </div>
+        
+    </a>
+    <a href="/tools/sandhi" class="list-group-item list-group-item-action flex-column align-items-start">
+
+        <div class="row">
+            <div class="col-sm-2">
+                <img src="https://img.icons8.com/wired/80/000000/pretzel.png"/>
+            </div>
+            <div class="col-sm-10">
+                <div class="d-flex w-100 justify-content-between">
+                    <h3 class="mb-1">संधि (Sandhi)</h3>
+                </div>
+                <p class="mb-5">Provide self words to perform join between the words</p>
+            </div>
+        </div>
+    </a>
+    <a href="/tools/sandhi-splitter" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="row">
+            <div class="col-sm-2">
+                <img src="https://img.icons8.com/dotty/80/000000/split-horizontal.png"/>
+            </div>
+            <div class="col-sm-10">
+                <div class="d-flex w-100 justify-content-between">
+                    <h3 class="mb-1">संधि-विछेद् (Sandhi-Splitter)</h3>
+                </div>
+                <p class="mb-5">Provide self words to perform sandhi split (संधि-विछेद्) between the words</p>
+            </div>
+        </div>
+    </a>
+    <a href="/tools/resources" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="row">
+            <div class="col-sm-2">
+                <img src="https://img.icons8.com/wired/80/000000/light-on.png"/>
+            </div>
+            <div class="col-sm-10">
+                <div class="d-flex w-100 justify-content-between">
+                    <h3 class="mb-1">पाण्डित्य (Resources)</h3>
+                </div>
+                <p class="mb-5">Some of the famous sayings of the day and more learning tools for sanskrit</p>
+            </div>
+        </div>
+    </a>
+    </div>
+</div>
+
+
+{% endblock %}
+
